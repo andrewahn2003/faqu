@@ -2,26 +2,85 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <title>FUCK YOU</title>
+  <title>극한의 병맛 욕 사이트</title>
   <style>
+    /* 전체 배경 */
     body {
       margin: 0;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #f2f2f2;
-      font-family: sans-serif;
+      height: 100vh;
+      background: repeating-conic-gradient(#ff9999 0% 25%, #ffff00 0% 50%) 50% / 200% 200%;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      overflow: hidden;
+      cursor: url('https://cur.cursors-4u.net/others/oth-4/oth379.cur'), auto;
+      animation: backgroundSpin 10s linear infinite;
     }
+
+    /* 중앙 이미지 */
     img {
-      max-width: 90vw;
-      max-height: 90vh;
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0,0,0,.15);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      max-width: 300px;
+      transform: translate(-50%, -50%) rotate(-10deg);
+      border: 5px dashed #ff0000;
+      border-radius: 50%;
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+      animation: spinImage 3s infinite alternate ease-in-out;
+    }
+
+    /* 따라다니는 욕 배너 */
+    .cursor-banner {
+      position: fixed;
+      pointer-events: none;
+      font-size: 2.2rem;
+      font-weight: 900;
+      padding: 8px 16px;
+      color: white;
+      background: linear-gradient(45deg, #ff0000, #ff7700, #ffff00);
+      border: 3px solid black;
+      border-radius: 20px;
+      text-shadow: 2px 2px 0 #000;
+      box-shadow: 0 0 20px #000;
+      transform: translate(-50%, -50%);
+      animation: wiggle 0.15s infinite alternate, rainbow 2s infinite linear;
+    }
+
+    /* 배경 회전 효과 */
+    @keyframes backgroundSpin {
+      0% { background-position: 0 0; }
+      100% { background-position: 400% 400%; }
+    }
+
+    /* 배너 흔들기 */
+    @keyframes wiggle {
+      0% { transform: translate(-50%, -50%) rotate(-2deg); }
+      100% { transform: translate(-50%, -50%) rotate(2deg); }
+    }
+
+    /* 배너 색상 바뀌기 */
+    @keyframes rainbow {
+      0% { filter: hue-rotate(0deg); }
+      100% { filter: hue-rotate(360deg); }
+    }
+
+    /* 이미지 흔들림 */
+    @keyframes spinImage {
+      0% { transform: translate(-50%, -50%) rotate(-10deg); }
+      100% { transform: translate(-50%, -50%) rotate(10deg); }
     }
   </style>
 </head>
 <body>
   <img src="fuckyou.webp" alt="Fuck You" />
+
+  <div id="banner" class="cursor-banner">FUCK YOU 🤬</div>
+
+  <script>
+    const banner = document.getElementById('banner');
+    document.addEventListener('mousemove', e => {
+      banner.style.left = e.clientX + 'px';
+      banner.style.top = e.clientY + 'px';
+    });
+  </script>
 </body>
 </html>
